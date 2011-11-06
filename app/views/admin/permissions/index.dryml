@@ -1,0 +1,33 @@
+<def tag="index-page" for="Permission">
+  <page merge title="#{ht 'permission.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page permission" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="permission.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="permission.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="permission.actions.new">New Permission</ht>
+        </a>
+
+        <table-plus fields="this, description" param/>
+
+      </section>
+      <% if Rails.env == 'development' %> <p class="dryml_file">"#{__FILE__}, #{__LINE__}"</p> <% end %>
+    </content:>
+  </page>
+</def>
+
+<index-page for="Permission"/>

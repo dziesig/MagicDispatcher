@@ -1,0 +1,38 @@
+/* Fixes the over-sized current tab */
+
+.page-header .navigation.main-nav li.current a {
+  color: #222;
+  background: url(../images/30-DBE1E5-FCFEF5.png) repeat-x #FCFEF5;
+  border:0;
+}
+
+.login-page, .forgot-password-page {width: 760px; margin-top: 40px;}
+
+.page-header .main-nav a 
+{
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 1px 11px;
+}
+
+.page-footer {text-align: center; color: black; background: url(../images/footer-background.png) repeat-x #3F606E;}
+.page-footer a 
+{
+  color: black; 
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.page-footer a:hover 
+{
+  color: white; 
+  background-color: black;
+  text-decoration: underline;
+}
+
+.main-nav li 
+{
+  margin-bottom: 1px;
+  margin-right: 3px;
+}

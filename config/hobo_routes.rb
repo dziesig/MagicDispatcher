@@ -26,6 +26,16 @@ MagicDispatcher::Application.routes.draw do
   get 'logout(.:format)' => 'users#logout', :as => 'user_logout'
   match 'forgot_password(.:format)' => 'users#forgot_password', :as => 'user_forgot_password'
 
+
+  # Resource routes for controller "railroads"
+  get 'railroads(.:format)' => 'railroads#index', :as => 'railroads'
+  get 'railroads/new(.:format)', :as => 'new_railroad'
+  get 'railroads/:id/edit(.:format)' => 'railroads#edit', :as => 'edit_railroad'
+  get 'railroads/:id(.:format)' => 'railroads#show', :as => 'railroad', :constraints => { :id => %r([^/.?]+) }
+  post 'railroads(.:format)' => 'railroads#create', :as => 'create_railroad'
+  put 'railroads/:id(.:format)' => 'railroads#update', :as => 'update_railroad', :constraints => { :id => %r([^/.?]+) }
+  delete 'railroads/:id(.:format)' => 'railroads#destroy', :as => 'destroy_railroad', :constraints => { :id => %r([^/.?]+) }
+
   namespace :admin do
 
 
@@ -37,6 +47,26 @@ MagicDispatcher::Application.routes.draw do
     post 'users(.:format)' => 'users#create', :as => 'create_user'
     put 'users/:id(.:format)' => 'users#update', :as => 'update_user', :constraints => { :id => %r([^/.?]+) }
     delete 'users/:id(.:format)' => 'users#destroy', :as => 'destroy_user', :constraints => { :id => %r([^/.?]+) }
+
+
+    # Resource routes for controller "admin/roles"
+    get 'roles(.:format)' => 'roles#index', :as => 'roles'
+    get 'roles/new(.:format)', :as => 'new_role'
+    get 'roles/:id/edit(.:format)' => 'roles#edit', :as => 'edit_role'
+    get 'roles/:id(.:format)' => 'roles#show', :as => 'role', :constraints => { :id => %r([^/.?]+) }
+    post 'roles(.:format)' => 'roles#create', :as => 'create_role'
+    put 'roles/:id(.:format)' => 'roles#update', :as => 'update_role', :constraints => { :id => %r([^/.?]+) }
+    delete 'roles/:id(.:format)' => 'roles#destroy', :as => 'destroy_role', :constraints => { :id => %r([^/.?]+) }
+
+
+    # Resource routes for controller "admin/permissions"
+    get 'permissions(.:format)' => 'permissions#index', :as => 'permissions'
+    get 'permissions/new(.:format)', :as => 'new_permission'
+    get 'permissions/:id/edit(.:format)' => 'permissions#edit', :as => 'edit_permission'
+    get 'permissions/:id(.:format)' => 'permissions#show', :as => 'permission', :constraints => { :id => %r([^/.?]+) }
+    post 'permissions(.:format)' => 'permissions#create', :as => 'create_permission'
+    put 'permissions/:id(.:format)' => 'permissions#update', :as => 'update_permission', :constraints => { :id => %r([^/.?]+) }
+    delete 'permissions/:id(.:format)' => 'permissions#destroy', :as => 'destroy_permission', :constraints => { :id => %r([^/.?]+) }
 
   end
 

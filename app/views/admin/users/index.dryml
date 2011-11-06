@@ -1,7 +1,44 @@
-<index-page without-new-form>
+<!--<index-page without-new-form>
   <after-count:>
     <a with="&User" action="invite">
       <t key="hobo.admin.invite_new_user">Invite a new user</t>
     </a>
   </after-count:>
-</index-page>
+  </index-page> -->
+
+<def tag="index-page" for="User">
+  <page merge title="#{ht 'user.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page user" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="user.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="user.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+
+       <table-plus fields="this, email_address" param/>
+
+<!--        <div param="new-form">
+          <h3 param="new-form-heading">
+            <ht key="user.form.new.heading">New User</ht>
+          </h3>
+          <form with="&@invalid_record || new_for_current_user(User)" param/>
+          </div> -->
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+<index-page for="User"/>

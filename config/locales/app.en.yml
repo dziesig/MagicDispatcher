@@ -2,7 +2,19 @@
 # e.g.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      railroad:
+        user:     Tycoon
+      user:
+        name:     Tycoon
+        
+
+  user:
+    index:
+      heading:    Tycoon Index
+    signup:
+      heading:    Signup New Tycoon
 
 #  attributes:
 #    created_at: Created at

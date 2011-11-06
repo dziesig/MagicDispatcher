@@ -1,0 +1,47 @@
+<!-- 
+  The extension of nav-item implements an interface to the
+  Permission/Role subsystem such that a positive permission in the
+  form of AccessMenuItem will show the <nav-item> associated with 
+  MenuItem (Use caution, the rails convention implies singular names,
+  I've already been burnt using the permission "AccessStreetTypes" 
+  which should have been "AccessStreetType") -->
+
+<extend tag="nav-item">
+  <% body = parameters.default
+     body = h(this.to_s) if body.blank?
+     name ||= body.gsub(/<.*?>/, '').strip    
+     show_it = !(current_user.class == Guest)
+    if show_it
+      show_it = (name == 'Home') || 
+                (name == 'Permissions') || 
+                (name == 'Roles') || 
+                ((name == 'Users') && (/admin/.match(parameters.inspect) != nil)) || # Patch so Users not exposed on primary menu.
+                (name.include?(' Mode')) ||
+                (this.to_s.blank?)
+      if !show_it
+        access = "current_user.canAccess" + this.to_s + "?"
+        show_it = !(eval access).nil?
+        ZLogger::puts("access: #{access.inspect} #{show_it.inspect}")
+      end
+    end
+  -%>
+  
+  <% if show_it %>
+  <!--    <old-nav-item merge rel="&this.to_s"/> -->
+  <li class="#{'current' if (c = scope.current_navigation) && c.downcase == name.downcase}"
+      merge-attrs="&attributes - (attrs_for(:a)+['target'])">
+    <a merge-attrs="&attributes & (attrs_for(:a)+['target'])" rel="&this.to_s"><%= body %></a>
+  </li>
+  <% else %>
+    <old-nav-item merge style="display:none" />
+  <% end %>
+</extend>
+
+<def tag="mode-nav-item">
+  <% ZLogger::puts "respond_to:  #{current_user.respond_to?(:has_multiple_roles?)}" %>
+  <% if current_user.respond_to?(:has_multiple_roles?) && current_user.has_multiple_roles?
+    mode = "Set #{current_user.alternate_role} Mode" %> 
+    <nav-item href="/user/toggle"><%= mode -%></nav-item>
+  <% end %>
+</def>
+

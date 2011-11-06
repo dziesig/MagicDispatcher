@@ -5,8 +5,130 @@
 <def tag="main-nav">
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Home</nav-item>
+    <nav-item with="&Railroad"><ht key="railroad.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
+
+
+
+
+<!-- ====== Railroad Pages ====== -->
+
+<def tag="index-page" for="Railroad">
+  <page merge title="#{ht 'railroad.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page railroad" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="railroad.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="railroad.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="railroad.actions.new">New Railroad</ht>
+        </a>
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Railroad">
+  <page merge title="#{ht 'railroad.new.title', :default=>[' New Railroad'] }">
+    <body: class="new-page railroad" param/>
+
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="railroad.new.heading">
+            New Railroad
+          </ht>
+        </h2>
+      </section>
+
+      <section param="content-body">
+        <form param>
+          <submit: label="#{ht 'railroad.actions.create', :default=>['Create Railroad']}"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Railroad">
+  <page merge title="#{ht 'railroad.show.title', :default=>['Railroad'], :name => name(:no_wrapper => true) }">
+
+    <body: class="show-page railroad" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading">
+              <ht key="railroad.show.heading" name="#{name(:no_wrapper => true)}">
+                Railroad <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="" param/>
+
+            <a:user param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="railroad.actions.edit" name="#{name(:no_wrapper => true)}">
+                Edit Railroad
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+          </section>
+    </content:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Railroad">
+  <page merge title="#{ht 'railroad.edit.title', :default=>['Edit Railroad'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page railroad" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="railroad.edit.heading" name="#{name(:no_wrapper => true)}">
+            Edit Railroad
+          </ht>
+        </h2>
+        <delete-button label="#{ht 'railroad.actions.delete', :default=>['Remove This Railroad']}" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
 
 
 
@@ -90,7 +212,7 @@
               </ht>
             </h2>
 
-            <record-flags fields="" param/>
+            <record-flags fields="administrator, use_secondary_role" param/>
 
             <a action="edit" if="&can_edit?" param="edit-link">
               <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
@@ -100,6 +222,7 @@
           </header>
 
           <section param="content-body">
+            <field-list fields="email_address, state, primary_role, secondary_role" param/>
           </section>
     </content:>
 

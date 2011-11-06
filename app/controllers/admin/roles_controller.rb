@@ -15,7 +15,7 @@
 #     You should have received a copy of the GNU General Public License
 #     along with MagicDispatcher.  If not, see <http://www.gnu.org/licenses/>.
 
-class Admin::UsersController < ApplicationController
+class Admin::RolesController < Admin::AdminSiteController
 
   hobo_model_controller
 
@@ -24,9 +24,9 @@ class Admin::UsersController < ApplicationController
   def index
     TablePlusSupport::save_param(params,:sort,session,'name')
     TablePlusSupport::save_param(params,:search,session)
-    hobo_index User.apply_scopes(:search => [params[:search],:name, :email_address],
+    hobo_index Role.apply_scopes(:search => [params[:search],:name],
                                   :order_by => 
-      parse_sort_param(:name, :email_address)), 
+      parse_sort_param(:name)), 
                      TablePlusSupport::save_page(params,10,session)
   end
 end

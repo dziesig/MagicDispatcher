@@ -20,3 +20,30 @@
     </footer:>
   </old-page>
 </extend>
+
+<def tag="signup-page" polymorphic/>
+<def tag="signup-page" for="User">
+
+  <page title="#{ht 'user.signup.title', :default=>['Signup']}" without-search merge>
+
+    <body: class="lifecycle-start-page signup-page" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="user.signup.heading">
+            Signup
+          </ht>
+        </h2>
+        <h3>DRZ</h3>
+      </header>
+
+      <section param="content-body">
+        <signup-form param="form"/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
+<signup-page for="User"/>

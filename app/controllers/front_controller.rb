@@ -15,5 +15,8 @@ class FrontController < ApplicationController
       site_search(params[:query])
     end
   end
+  
+  def gpl
+  end
 
 end

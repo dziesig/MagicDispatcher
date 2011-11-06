@@ -9,11 +9,32 @@
 <set-theme name="clean"/>
 
 <extend tag="page">
-  <old-page merge>
+  <old-page merge without-live-search>
+    <content: replace>
+      <section-group class="page-content">
+          <section with-flash-messages param="content"/>
+	    </section-group>
+	  </content:>
+
     <footer:>
       <a href="&admin_users_url" if="&current_user.administrator?">
         <t key="hobo.admin.subsite_name">Admin</t>
       </a>
+      <a href="mailto:webmaster@ziesigteam.com">Contact Webmaster</a>
+      <p>Copyright &copy; 2010, 2011 by Donald R. Ziesig.  All Rights Reserved - Last update 6 Nov 2011
+      </p>
+      <a href="gpl">This program is released under the GNU General Public License</a> <a href="warranty">This program comes with ABSOLUTELY NO WARRANTY</a><br/>
+      <a href="copy">This is free software, and you are welcome to redistribute it under certain conditions</a>
+      <br/>
     </footer:>
   </old-page>
+</extend>
+
+<extend tag="main-nav">
+  <div id="main_menu" class="navigation main-nav">
+    <navigation class="main-nav" merge-attrs param="default">
+      <mode-nav-item/>
+      <old-main-nav merge-attrs/>
+    </navigation>
+  </div>
 </extend>

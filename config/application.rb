@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require './lib/zlogger.rb'
+require './lib/zprofiler.rb'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,10 +10,16 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module MagicDispatcher
   class Application < Rails::Application
-  config.i18n.default_locale = :en
+    config.i18n.default_locale = :en
+  
+    ZLogger.assign('./log/zlog11')
+    ZProfiler.assign('./log/zprof11')
+  
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.hobo.show_translation_keys = false
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)

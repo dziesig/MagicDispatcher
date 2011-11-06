@@ -15,18 +15,37 @@
 #     You should have received a copy of the GNU General Public License
 #     along with MagicDispatcher.  If not, see <http://www.gnu.org/licenses/>.
 
-class Admin::UsersController < ApplicationController
+class Role < ActiveRecord::Base
 
-  hobo_model_controller
+  hobo_model # Don't put anything above this
 
-  auto_actions :all
-
-  def index
-    TablePlusSupport::save_param(params,:sort,session,'name')
-    TablePlusSupport::save_param(params,:search,session)
-    hobo_index User.apply_scopes(:search => [params[:search],:name, :email_address],
-                                  :order_by => 
-      parse_sort_param(:name, :email_address)), 
-                     TablePlusSupport::save_page(params,10,session)
+  fields do
+    name        :string, :unique, :index
+    description :string
+    timestamps
   end
+
+  has_many :users
+
+  has_many :permissions, :through => :permission_roles, :accessible => true
+  has_many :permission_roles, :dependent => :destroy
+
+  # --- Permissions --- #
+
+  def create_permitted?
+    acting_user.administrator?
+  end
+
+  def update_permitted?
+    acting_user.administrator?
+  end
+
+  def destroy_permitted?
+    acting_user.administrator?
+  end
+
+  def view_permitted?(field)
+    true
+  end
+
 end

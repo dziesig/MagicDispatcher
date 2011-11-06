@@ -1,9 +1,21 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
 
+<def tag="form" for="Railroad">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, user" param/>
+    <div param="actions">
+      <submit label="#{ht 'railroad.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="User">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="" param/>
+    <field-list fields="name, email_address, administrator, state, primary_role, secondary_role" param/>
     <div param="actions">
       <submit label="#{ht 'user.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

@@ -2,6 +2,12 @@ MagicDispatcher::Application.routes.draw do
   root :to => 'front#index'
 
   match 'search' => 'front#search', :as => 'site_search'
+  
+  match 'user/toggle' => 'users#toggle'
+  
+  match 'gpl' => 'front#gpl'
+  match 'warranty' => 'front#warranty'
+  match 'copy' => 'front#copy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
