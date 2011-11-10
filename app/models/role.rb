@@ -20,7 +20,8 @@ class Role < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name        :string, :unique, :index
+    # name        :string, :unique, :index, :required => true
+    name        :string, :required, :index, :unique
     description :string
     timestamps
   end

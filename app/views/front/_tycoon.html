@@ -1,0 +1,7 @@
+<h1>Tycoon</h1>
+<%= collection_select(:railroad, :name, railroads, :id, :name, :prompt => true) -%>
+<%= observe_field(:railroad_name, :url => { :action => :find_branches }, :update => 'branches')%>
+<h3>x <%= x.inspect -%></h3>
+<h3>y <%= y.inspect -%></h3>
+<h3>end</h3>
+<div id='branches'></div>

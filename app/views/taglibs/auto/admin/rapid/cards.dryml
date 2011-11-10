@@ -1,5 +1,16 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
 
+<def tag="card" for="Branch">
+  <card class="branch" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+    <body: param>
+      <view:railroad param="creator"/>
+    </body:>
+  </card>
+</def>
+
 <def tag="card" for="Permission">
   <card class="permission" param="default" merge>
     <header: param>
@@ -31,6 +42,25 @@
   <card class="role" param="default" merge>
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Section">
+  <card class="section" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+    <body: param>
+      <view:branch param="creator"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Track">
+  <card class="track" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
     </header:>
   </card>
 </def>

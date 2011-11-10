@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111106160101) do
+ActiveRecord::Schema.define(:version => 20111109230558) do
+
+  create_table "branches", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "railroad_id"
+  end
+
+  add_index "branches", ["railroad_id"], :name => "index_branches_on_railroad_id"
 
   create_table "permission_roles", :force => true do |t|
     t.integer "role_id"
@@ -43,6 +52,24 @@ ActiveRecord::Schema.define(:version => 20111106160101) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sections", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "branch_id"
+  end
+
+  add_index "sections", ["branch_id"], :name => "index_sections_on_branch_id"
+
+  create_table "tracks", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "section_id"
+  end
+
+  add_index "tracks", ["section_id"], :name => "index_tracks_on_section_id"
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",          :limit => 40

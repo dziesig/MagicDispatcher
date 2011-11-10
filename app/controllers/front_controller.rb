@@ -2,7 +2,12 @@ class FrontController < ApplicationController
 
   hobo_controller
 
-  def index; end
+  def index; 
+    ZLogger::puts "FrontController params #{params.inspect}";
+    if current_user.role.to_s == 'Tycoon'
+      @railroads = Railroad.find(:all)
+    end
+  end
 
   def summary
     if !current_user.administrator?

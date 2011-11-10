@@ -1,11 +1,47 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
 
+<def tag="form" for="Branch">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, railroad" param/>
+    <div param="actions">
+      <submit label="#{ht 'branch.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="Railroad">
   <form merge param="default">
     <error-messages param/>
     <field-list fields="name, user" param/>
     <div param="actions">
       <submit label="#{ht 'railroad.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Section">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, branch" param/>
+    <div param="actions">
+      <submit label="#{ht 'section.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Track">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, section" param/>
+    <div param="actions">
+      <submit label="#{ht 'track.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>

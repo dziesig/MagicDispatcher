@@ -4,13 +4,7 @@
 
   <content:>
     <header class="content-header">
-      <h1>Welcome to <app-name/></h1>
       <section class="welcome-message">
-        <h3>Congratulations! Your Hobo Rails App is up and running</h3>
-        <ul>
-          <li>To customise this page: edit app/views/front/index.dryml</li>
-        </ul>
-
         <% if User.count == 0 -%>
           <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
           <form with="&this || User.new" without-cancel>
@@ -18,12 +12,19 @@
             <submit: label="Register Administrator"/>
           </form>
         <% end -%>
-
-
       </section>
-      </header> 
+    </header> 
 
     <section class="content-body">
+        <% if User.count > 0 -%>
+          <% role = current_user.role.to_s -%>
+          <% if role == 'Tycoon' -%>
+            <partial name='tycoon' locals="&{:x => 10, :y => 20, :railroads => @railroads}"/>
+          <% end -%>
+          <% if role == 'Dispatcher' -%>
+            <partial name='dispatcher'/>
+          <% end -%>
+        <% end -%>
     </section>
   </content:>
 

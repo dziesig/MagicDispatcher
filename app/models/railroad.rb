@@ -26,6 +26,8 @@ class Railroad < ActiveRecord::Base
 
   belongs_to :user, :creator => true
   
+  has_many :branches, :dependent => :destroy
+  
   # --- Permissions --- #
 
   def create_permitted?

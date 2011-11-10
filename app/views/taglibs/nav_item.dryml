@@ -21,7 +21,6 @@
       if !show_it
         access = "current_user.canAccess" + this.to_s + "?"
         show_it = !(eval access).nil?
-        ZLogger::puts("access: #{access.inspect} #{show_it.inspect}")
       end
     end
   -%>
@@ -38,7 +37,6 @@
 </extend>
 
 <def tag="mode-nav-item">
-  <% ZLogger::puts "respond_to:  #{current_user.respond_to?(:has_multiple_roles?)}" %>
   <% if current_user.respond_to?(:has_multiple_roles?) && current_user.has_multiple_roles?
     mode = "Set #{current_user.alternate_role} Mode" %> 
     <nav-item href="/user/toggle"><%= mode -%></nav-item>

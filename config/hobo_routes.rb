@@ -27,6 +27,16 @@ MagicDispatcher::Application.routes.draw do
   match 'forgot_password(.:format)' => 'users#forgot_password', :as => 'user_forgot_password'
 
 
+  # Resource routes for controller "sections"
+  get 'sections(.:format)' => 'sections#index', :as => 'sections'
+  get 'sections/new(.:format)', :as => 'new_section'
+  get 'sections/:id/edit(.:format)' => 'sections#edit', :as => 'edit_section'
+  get 'sections/:id(.:format)' => 'sections#show', :as => 'section', :constraints => { :id => %r([^/.?]+) }
+  post 'sections(.:format)' => 'sections#create', :as => 'create_section'
+  put 'sections/:id(.:format)' => 'sections#update', :as => 'update_section', :constraints => { :id => %r([^/.?]+) }
+  delete 'sections/:id(.:format)' => 'sections#destroy', :as => 'destroy_section', :constraints => { :id => %r([^/.?]+) }
+
+
   # Resource routes for controller "railroads"
   get 'railroads(.:format)' => 'railroads#index', :as => 'railroads'
   get 'railroads/new(.:format)', :as => 'new_railroad'
@@ -35,6 +45,26 @@ MagicDispatcher::Application.routes.draw do
   post 'railroads(.:format)' => 'railroads#create', :as => 'create_railroad'
   put 'railroads/:id(.:format)' => 'railroads#update', :as => 'update_railroad', :constraints => { :id => %r([^/.?]+) }
   delete 'railroads/:id(.:format)' => 'railroads#destroy', :as => 'destroy_railroad', :constraints => { :id => %r([^/.?]+) }
+
+
+  # Resource routes for controller "branches"
+  get 'branches(.:format)' => 'branches#index', :as => 'branches'
+  get 'branches/new(.:format)', :as => 'new_branch'
+  get 'branches/:id/edit(.:format)' => 'branches#edit', :as => 'edit_branch'
+  get 'branches/:id(.:format)' => 'branches#show', :as => 'branch', :constraints => { :id => %r([^/.?]+) }
+  post 'branches(.:format)' => 'branches#create', :as => 'create_branch'
+  put 'branches/:id(.:format)' => 'branches#update', :as => 'update_branch', :constraints => { :id => %r([^/.?]+) }
+  delete 'branches/:id(.:format)' => 'branches#destroy', :as => 'destroy_branch', :constraints => { :id => %r([^/.?]+) }
+
+
+  # Resource routes for controller "tracks"
+  get 'tracks(.:format)' => 'tracks#index', :as => 'tracks'
+  get 'tracks/new(.:format)', :as => 'new_track'
+  get 'tracks/:id/edit(.:format)' => 'tracks#edit', :as => 'edit_track'
+  get 'tracks/:id(.:format)' => 'tracks#show', :as => 'track', :constraints => { :id => %r([^/.?]+) }
+  post 'tracks(.:format)' => 'tracks#create', :as => 'create_track'
+  put 'tracks/:id(.:format)' => 'tracks#update', :as => 'update_track', :constraints => { :id => %r([^/.?]+) }
+  delete 'tracks/:id(.:format)' => 'tracks#destroy', :as => 'destroy_track', :constraints => { :id => %r([^/.?]+) }
 
   namespace :admin do
 

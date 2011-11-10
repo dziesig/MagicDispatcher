@@ -1,0 +1,27 @@
+<include src="railroads/form" />
+
+<def tag="edit-page" for="Railroad">
+  <page merge title="#{ht 'railroad.edit.title', :default=>['Edit Railroad'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page railroad" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="railroad.edit.heading" name="#{name(:no_wrapper => true)}">
+            Edit Railroad
+          </ht>
+        </h2>
+        <delete-button label="#{ht 'railroad.actions.delete', :default=>['Remove This Railroad']}" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
+
+<edit-page for="Railroad"/>
