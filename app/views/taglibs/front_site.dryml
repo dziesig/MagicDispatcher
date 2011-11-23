@@ -15,7 +15,19 @@
           <section with-flash-messages param="content"/>
 	    </section-group>
 	  </content:>
-
+    <append-header:>
+      <if test="&(current_user.class != Guest) && (current_user.role.to_s == 'Tycoon')" >
+        <div class='tycoon_header'>
+          <table>
+            <tr>
+            <th>Railroad:</th><td><%= @railroad_name %></td>
+            <th>Branch:</th><td><%= @branch_name %></td>
+            <th>Section:</th><td><%= @section_name %></td>
+            </tr>
+          </table>
+        </div>
+      </if>
+    </append-header:>
     <footer:>
       <a href="&admin_users_url" if="&current_user.administrator?">
         <t key="hobo.admin.subsite_name">Admin</t>

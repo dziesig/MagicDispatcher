@@ -12,6 +12,8 @@ MagicDispatcher::Application.routes.draw do
   get 'users/:id/reset_password(.:format)' => 'users#reset_password', :as => 'user_reset_password'
 
   # Resource routes for controller "users"
+  get 'users(.:format)' => 'users#index', :as => 'users'
+  get 'users/new(.:format)', :as => 'new_user'
   get 'users/:id/edit(.:format)' => 'users#edit', :as => 'edit_user'
   get 'users/:id(.:format)' => 'users#show', :as => 'user', :constraints => { :id => %r([^/.?]+) }
   post 'users(.:format)' => 'users#create', :as => 'create_user'
@@ -69,6 +71,16 @@ MagicDispatcher::Application.routes.draw do
   namespace :admin do
 
 
+    # Resource routes for controller "admin/track_types"
+    get 'track_types(.:format)' => 'track_types#index', :as => 'track_types'
+    get 'track_types/new(.:format)', :as => 'new_track_type'
+    get 'track_types/:id/edit(.:format)' => 'track_types#edit', :as => 'edit_track_type'
+    get 'track_types/:id(.:format)' => 'track_types#show', :as => 'track_type', :constraints => { :id => %r([^/.?]+) }
+    post 'track_types(.:format)' => 'track_types#create', :as => 'create_track_type'
+    put 'track_types/:id(.:format)' => 'track_types#update', :as => 'update_track_type', :constraints => { :id => %r([^/.?]+) }
+    delete 'track_types/:id(.:format)' => 'track_types#destroy', :as => 'destroy_track_type', :constraints => { :id => %r([^/.?]+) }
+
+
     # Resource routes for controller "admin/users"
     get 'users(.:format)' => 'users#index', :as => 'users'
     get 'users/new(.:format)', :as => 'new_user'
@@ -77,6 +89,16 @@ MagicDispatcher::Application.routes.draw do
     post 'users(.:format)' => 'users#create', :as => 'create_user'
     put 'users/:id(.:format)' => 'users#update', :as => 'update_user', :constraints => { :id => %r([^/.?]+) }
     delete 'users/:id(.:format)' => 'users#destroy', :as => 'destroy_user', :constraints => { :id => %r([^/.?]+) }
+
+
+    # Resource routes for controller "admin/track_connections"
+    get 'track_connections(.:format)' => 'track_connections#index', :as => 'track_connections'
+    get 'track_connections/new(.:format)', :as => 'new_track_connection'
+    get 'track_connections/:id/edit(.:format)' => 'track_connections#edit', :as => 'edit_track_connection'
+    get 'track_connections/:id(.:format)' => 'track_connections#show', :as => 'track_connection', :constraints => { :id => %r([^/.?]+) }
+    post 'track_connections(.:format)' => 'track_connections#create', :as => 'create_track_connection'
+    put 'track_connections/:id(.:format)' => 'track_connections#update', :as => 'update_track_connection', :constraints => { :id => %r([^/.?]+) }
+    delete 'track_connections/:id(.:format)' => 'track_connections#destroy', :as => 'destroy_track_connection', :constraints => { :id => %r([^/.?]+) }
 
 
     # Resource routes for controller "admin/roles"

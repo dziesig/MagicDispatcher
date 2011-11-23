@@ -1,0 +1,78 @@
+                    root        /(.:format)                           {:action=>"index", :controller=>"front"}
+             site_search        /search(.:format)                     {:action=>"search", :controller=>"front"}
+             user_toggle        /user/toggle(.:format)                {:action=>"toggle", :controller=>"users"}
+                     gpl        /gpl(.:format)                        {:action=>"gpl", :controller=>"front"}
+                warranty        /warranty(.:format)                   {:action=>"warranty", :controller=>"front"}
+                    copy        /copy(.:format)                       {:action=>"copy", :controller=>"front"}
+      front_branches_div        /front/branches_div(.:format)         {:action=>"branches_div", :controller=>"front"}
+           dryml_support        /dryml/:action(.:format)              {:controller=>"dryml_support"}
+             dev_support        /dev/:action(.:format)                {:controller=>"dev"}
+                branches GET    /branches(.:format)                   {:action=>"index", :controller=>"branches"}
+              new_branch GET    /branches/new(.:format)               {:action=>"new", :controller=>"branches"}
+             edit_branch GET    /branches/:id/edit(.:format)          {:action=>"edit", :controller=>"branches"}
+                  branch GET    /branches/:id(.:format)               {:action=>"show", :controller=>"branches"}
+           create_branch POST   /branches(.:format)                   {:action=>"create", :controller=>"branches"}
+           update_branch PUT    /branches/:id(.:format)               {:action=>"update", :controller=>"branches"}
+          destroy_branch DELETE /branches/:id(.:format)               {:action=>"destroy", :controller=>"branches"}
+          do_user_signup POST   /users/signup(.:format)               {:action=>"do_signup", :controller=>"users"}
+             user_signup GET    /users/signup(.:format)               {:action=>"signup", :controller=>"users"}
+  do_user_reset_password PUT    /users/:id/reset_password(.:format)   {:action=>"do_reset_password", :controller=>"users"}
+     user_reset_password GET    /users/:id/reset_password(.:format)   {:action=>"reset_password", :controller=>"users"}
+               edit_user GET    /users/:id/edit(.:format)             {:action=>"edit", :controller=>"users"}
+                    user GET    /users/:id(.:format)                  {:action=>"show", :controller=>"users"}
+             create_user POST   /users(.:format)                      {:action=>"create", :controller=>"users"}
+             update_user PUT    /users/:id(.:format)                  {:action=>"update", :controller=>"users"}
+            destroy_user DELETE /users/:id(.:format)                  {:action=>"destroy", :controller=>"users"}
+            user_account GET    /users/:id/account(.:format)          {:action=>"account", :controller=>"users"}
+              user_login        /login(.:format)                      {:action=>"login", :controller=>"users"}
+             user_logout GET    /logout(.:format)                     {:action=>"logout", :controller=>"users"}
+    user_forgot_password        /forgot_password(.:format)            {:action=>"forgot_password", :controller=>"users"}
+                  tracks GET    /tracks(.:format)                     {:action=>"index", :controller=>"tracks"}
+               new_track GET    /tracks/new(.:format)                 {:action=>"new", :controller=>"tracks"}
+              edit_track GET    /tracks/:id/edit(.:format)            {:action=>"edit", :controller=>"tracks"}
+                   track GET    /tracks/:id(.:format)                 {:action=>"show", :controller=>"tracks"}
+            create_track POST   /tracks(.:format)                     {:action=>"create", :controller=>"tracks"}
+            update_track PUT    /tracks/:id(.:format)                 {:action=>"update", :controller=>"tracks"}
+           destroy_track DELETE /tracks/:id(.:format)                 {:action=>"destroy", :controller=>"tracks"}
+                sections GET    /sections(.:format)                   {:action=>"index", :controller=>"sections"}
+             new_section GET    /sections/new(.:format)               {:action=>"new", :controller=>"sections"}
+            edit_section GET    /sections/:id/edit(.:format)          {:action=>"edit", :controller=>"sections"}
+                 section GET    /sections/:id(.:format)               {:action=>"show", :controller=>"sections"}
+          create_section POST   /sections(.:format)                   {:action=>"create", :controller=>"sections"}
+          update_section PUT    /sections/:id(.:format)               {:action=>"update", :controller=>"sections"}
+         destroy_section DELETE /sections/:id(.:format)               {:action=>"destroy", :controller=>"sections"}
+               railroads GET    /railroads(.:format)                  {:action=>"index", :controller=>"railroads"}
+            new_railroad GET    /railroads/new(.:format)              {:action=>"new", :controller=>"railroads"}
+           edit_railroad GET    /railroads/:id/edit(.:format)         {:action=>"edit", :controller=>"railroads"}
+                railroad GET    /railroads/:id(.:format)              {:action=>"show", :controller=>"railroads"}
+         create_railroad POST   /railroads(.:format)                  {:action=>"create", :controller=>"railroads"}
+         update_railroad PUT    /railroads/:id(.:format)              {:action=>"update", :controller=>"railroads"}
+        destroy_railroad DELETE /railroads/:id(.:format)              {:action=>"destroy", :controller=>"railroads"}
+             admin_roles GET    /admin/roles(.:format)                {:action=>"index", :controller=>"admin/roles"}
+          admin_new_role GET    /admin/roles/new(.:format)            {:action=>"new", :controller=>"admin/roles"}
+         admin_edit_role GET    /admin/roles/:id/edit(.:format)       {:action=>"edit", :controller=>"admin/roles"}
+              admin_role GET    /admin/roles/:id(.:format)            {:action=>"show", :controller=>"admin/roles"}
+       admin_create_role POST   /admin/roles(.:format)                {:action=>"create", :controller=>"admin/roles"}
+       admin_update_role PUT    /admin/roles/:id(.:format)            {:action=>"update", :controller=>"admin/roles"}
+      admin_destroy_role DELETE /admin/roles/:id(.:format)            {:action=>"destroy", :controller=>"admin/roles"}
+       admin_permissions GET    /admin/permissions(.:format)          {:action=>"index", :controller=>"admin/permissions"}
+    admin_new_permission GET    /admin/permissions/new(.:format)      {:action=>"new", :controller=>"admin/permissions"}
+   admin_edit_permission GET    /admin/permissions/:id/edit(.:format) {:action=>"edit", :controller=>"admin/permissions"}
+        admin_permission GET    /admin/permissions/:id(.:format)      {:action=>"show", :controller=>"admin/permissions"}
+ admin_create_permission POST   /admin/permissions(.:format)          {:action=>"create", :controller=>"admin/permissions"}
+ admin_update_permission PUT    /admin/permissions/:id(.:format)      {:action=>"update", :controller=>"admin/permissions"}
+admin_destroy_permission DELETE /admin/permissions/:id(.:format)      {:action=>"destroy", :controller=>"admin/permissions"}
+       admin_track_types GET    /admin/track_types(.:format)          {:action=>"index", :controller=>"admin/track_types"}
+    admin_new_track_type GET    /admin/track_types/new(.:format)      {:action=>"new", :controller=>"admin/track_types"}
+   admin_edit_track_type GET    /admin/track_types/:id/edit(.:format) {:action=>"edit", :controller=>"admin/track_types"}
+        admin_track_type GET    /admin/track_types/:id(.:format)      {:action=>"show", :controller=>"admin/track_types"}
+ admin_create_track_type POST   /admin/track_types(.:format)          {:action=>"create", :controller=>"admin/track_types"}
+ admin_update_track_type PUT    /admin/track_types/:id(.:format)      {:action=>"update", :controller=>"admin/track_types"}
+admin_destroy_track_type DELETE /admin/track_types/:id(.:format)      {:action=>"destroy", :controller=>"admin/track_types"}
+             admin_users GET    /admin/users(.:format)                {:action=>"index", :controller=>"admin/users"}
+          admin_new_user GET    /admin/users/new(.:format)            {:action=>"new", :controller=>"admin/users"}
+         admin_edit_user GET    /admin/users/:id/edit(.:format)       {:action=>"edit", :controller=>"admin/users"}
+              admin_user GET    /admin/users/:id(.:format)            {:action=>"show", :controller=>"admin/users"}
+       admin_create_user POST   /admin/users(.:format)                {:action=>"create", :controller=>"admin/users"}
+       admin_update_user PUT    /admin/users/:id(.:format)            {:action=>"update", :controller=>"admin/users"}
+      admin_destroy_user DELETE /admin/users/:id(.:format)            {:action=>"destroy", :controller=>"admin/users"}

@@ -1,0 +1,81 @@
+<def tag="form" for="Track">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name" param/>
+    <div class="track-edit">    
+      <table>
+        <% if this.track_type %>
+          <tr>
+            <% if this.track_type.has_connection?(TrackType::UL)%>
+              <td><editor: field="ul"/></td>
+              <td><editor: field="ul_ext" options="&@this.external_connections(TrackType::UL)"  blank-message="NO" /></td>
+            <% else %>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            <% end %>
+            <td>&nbsp;</td>
+            <% if this.track_type.has_connection?(TrackType::UR)%>
+              <td><editor: field="ur_ext" options="&@this.external_connections(TrackType::UR)"  blank-message="NO" /></td>
+              <td><editor: field="ur"/></td>
+            <% else %>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            <% end %>
+          </tr>
+          <tr>
+            <% if this.track_type.has_connection?(TrackType::CL)%>
+              <td><editor: field="cl"/></td>
+              <td><editor: field="cl_ext" options="&@this.external_connections(TrackType::CL)"  blank-message="NO" /></td>
+            <% else %>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            <% end %>
+            <% if @editing %>
+            <td class="track-edit-type"><view: field="track_type"/></td>
+            <% else %>
+            <td><editor: field="track_type"/></td>
+            <% end %>
+            <% if this.track_type.has_connection?(TrackType::CR)%>
+              <td><editor: field="cr_ext" options="&@this.external_connections(TrackType::CR)" blank-message="NO" /></td>
+              <td><editor: field="cr"/></td>
+            <% else %>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            <% end %>
+          </tr>
+          <tr>
+            <% if this.track_type.has_connection?(TrackType::LL)%>
+              <td><editor: field="ll"/></td>
+              <td><editor: field="ll_ext" options="&@this.external_connections(TrackType::LL)"  blank-message="NO" /></td>
+            <% else %>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            <% end %>
+            <td>&nbsp;</td>
+            <% if this.track_type.has_connection?(TrackType::LR)%>
+              <td><editor: field="lr_ext" options="&@this.external_connections(TrackType::LR)"  blank-message="NO" /></td>
+              <td><editor: field="lr"/></td>
+            <% else %>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            <% end %>
+          </tr>
+        <% else %>
+          <tr>
+            <td><editor: field="track_type"/></td>
+          </tr>
+        <% end %>
+      </table>  
+    </div>
+    <div param="actions">
+      <submit label="#{ht 'track.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+    <h5><%= __FILE__ -%></h5>
+  </form>
+  
+</def>
+
+<form for="Track"/>
+
+<!-- <select-one field="cr_ext", options=this.external_connections(TrackType::CR)></select-one> -->
+<!--<%= #select(:track, :cr_ext, this.external_connections(TrackType::CR)) %> -->

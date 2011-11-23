@@ -1,5 +1,10 @@
 /* Fixes the over-sized current tab */
 
+.page-header h1
+{
+  padding : 10px 30px 20px;
+}
+
 .page-header .navigation.main-nav li.current a {
   color: #222;
   background: url(../images/30-DBE1E5-FCFEF5.png) repeat-x #FCFEF5;
@@ -22,6 +27,9 @@
   color: black; 
   background-color: transparent;
   text-decoration: underline;
+  margin-top : -3px;
+  margin-bottom : -3px;
+  padding:0px;
 }
 
 .page-footer a:hover 
@@ -30,9 +38,112 @@
   background-color: black;
   text-decoration: underline;
 }
+.page-footer p
+{
+  padding:0px;
+  margin-top : -3px;
+  margin-bottom : -3px;
+  padding:0px;
+}
 
+.main-nav
+{
+  margin-botton: -2px;
+}
 .main-nav li 
 {
-  margin-bottom: 1px;
+  margin-bottom: 0px;
   margin-right: 3px;
+}
+
+#railroad_name
+{
+  color : black;
+}
+
+.tycoon_header h1
+{
+  color : red;
+  text-align:center;
+}
+
+.tycoon_header
+{
+    background-color : #666666;
+}
+
+.tycoon_header table
+{
+  margin-left: auto;
+  margin-right : auto;
+/*  height : 20px;
+/*  margin-top : -1px;
+margin-bottom : -7px; */
+}
+
+.tycoon_header tr
+{
+  padding:0px 10px 0px 10px;
+}
+
+.tycoon_header th
+{
+  font-size : 12px;
+  font-weight : bold;
+  padding:0px 10px 0px 10px;
+}
+
+.tycoon_header td
+{
+  font-size : 12px;
+  font-weight : normal;
+  padding:0px 10px 0px 10px;
+}
+.tycoon_front h1
+{
+  text-align:center;
+  color : red;
+  padding: 20px 0;
+}
+
+.track-edit table
+{
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.track-edit td
+{
+  padding: 5px 10px;
+}
+
+.track-edit-type
+{
+  font-size : 14px;
+  font-weight : bold;
+}
+/*
+
+.md_front table
+{
+  padding: 25px;
+  margin-left: auto;
+  margin-right : auto;
+}
+
+.md_front td, th
+{
+  padding: 10px;
+  font-size: 20px;
+}
+
+.md_front th
+{
+  font-weight: bold;
+}
+*/
+.content-body
+{
+  padding : 1px;
 }

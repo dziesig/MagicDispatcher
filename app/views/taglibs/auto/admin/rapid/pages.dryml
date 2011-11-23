@@ -7,6 +7,8 @@
     <nav-item href="#{base_url}/">Home</nav-item>
     <nav-item with="&Permission"><ht key="permission.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Role"><ht key="role.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&TrackConnection"><ht key="track_connection.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&TrackType"><ht key="track_type.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&User"><ht key="user.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
@@ -240,6 +242,246 @@
           </ht>
         </h2>
         <delete-button label="#{ht 'role.actions.delete', :default=>['Remove This Role']}" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
+
+
+
+
+<!-- ====== TrackConnection Pages ====== -->
+
+<def tag="index-page" for="TrackConnection">
+  <page merge title="#{ht 'track_connection.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page track-connection" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="track_connection.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="track_connection.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="track_connection.actions.new">New Track connection</ht>
+        </a>
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="TrackConnection">
+  <page merge title="#{ht 'track_connection.new.title', :default=>[' New Track connection'] }">
+    <body: class="new-page track-connection" param/>
+
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="track_connection.new.heading">
+            New Track connection
+          </ht>
+        </h2>
+      </section>
+
+      <section param="content-body">
+        <form param>
+          <submit: label="#{ht 'track_connection.actions.create', :default=>['Create Track connection']}"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="TrackConnection">
+  <page merge title="#{ht 'track_connection.show.title', :default=>['Track connection'], :name => name(:no_wrapper => true) }">
+
+    <body: class="show-page track-connection" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading">
+              <ht key="track_connection.show.heading" name="#{name(:no_wrapper => true)}">
+                Track connection <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="left, top, center, bottom" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="track_connection.actions.edit" name="#{name(:no_wrapper => true)}">
+                Edit Track connection
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+            <field-list fields="index" param/>
+          </section>
+    </content:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="TrackConnection">
+  <page merge title="#{ht 'track_connection.edit.title', :default=>['Edit Track connection'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page track-connection" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="track_connection.edit.heading" name="#{name(:no_wrapper => true)}">
+            Edit Track connection
+          </ht>
+        </h2>
+        <delete-button label="#{ht 'track_connection.actions.delete', :default=>['Remove This Track connection']}" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
+
+
+
+
+<!-- ====== TrackType Pages ====== -->
+
+<def tag="index-page" for="TrackType">
+  <page merge title="#{ht 'track_type.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page track-type" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="track_type.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="track_type.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="track_type.actions.new">New Track type</ht>
+        </a>
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="TrackType">
+  <page merge title="#{ht 'track_type.new.title', :default=>[' New Track type'] }">
+    <body: class="new-page track-type" param/>
+
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="track_type.new.heading">
+            New Track type
+          </ht>
+        </h2>
+      </section>
+
+      <section param="content-body">
+        <form param>
+          <submit: label="#{ht 'track_type.actions.create', :default=>['Create Track type']}"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="TrackType">
+  <page merge title="#{ht 'track_type.show.title', :default=>['Track type'], :name => name(:no_wrapper => true) }">
+
+    <body: class="show-page track-type" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading">
+              <ht key="track_type.show.heading" name="#{name(:no_wrapper => true)}">
+                Track type <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="track_type.actions.edit" name="#{name(:no_wrapper => true)}">
+                Edit Track type
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+            <field-list fields="index" param/>
+          </section>
+    </content:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="TrackType">
+  <page merge title="#{ht 'track_type.edit.title', :default=>['Edit Track type'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page track-type" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="track_type.edit.heading" name="#{name(:no_wrapper => true)}">
+            Edit Track type
+          </ht>
+        </h2>
+        <delete-button label="#{ht 'track_type.actions.delete', :default=>['Remove This Track type']}" param/>
       </section>
 
       <section param="content-body">

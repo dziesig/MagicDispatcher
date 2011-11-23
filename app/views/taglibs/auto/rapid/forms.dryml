@@ -15,7 +15,7 @@
 <def tag="form" for="Railroad">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, user" param/>
+    <field-list fields="name, north_south, west_south_on_right, eastbound_odd_numbers, user" param/>
     <div param="actions">
       <submit label="#{ht 'railroad.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -39,7 +39,7 @@
 <def tag="form" for="Track">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, section" param/>
+    <field-list fields="name, track_class, length, cl, cl_ext, cr, cr_ext, ll, ll_ext, lr, lr_ext, section, track_type, ul, ul_ext, ur, ur_ext" param/>
     <div param="actions">
       <submit label="#{ht 'track.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

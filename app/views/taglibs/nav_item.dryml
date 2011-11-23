@@ -22,6 +22,24 @@
         access = "current_user.canAccess" + this.to_s + "?"
         show_it = !(eval access).nil?
       end
+      if show_it
+        # See if the program has defined global variable $hide_tabs as
+        # either a string (hides only the named tab) or an array of
+        # strings (hides each of the tabs)
+        if !$hide_tabs.nil?
+          hide_tabs_type = $hide_tabs.class.name
+          if hide_tabs_type == 'String'
+            show_it = $hide_tabs.to_s != this.to_s
+          elsif hide_tabs_type == 'Symbol'
+            show_it = $hide_tabs.to_s != this.to_s
+          elsif hide_tabs_type == 'Array'
+            for x in $hide_tabs do
+              show_it = x != this.to_s
+              break if !show_it
+            end 
+          end
+        end
+      end
     end
   -%>
   

@@ -1,0 +1,24 @@
+<def tag="new-page" for="Track">
+  <page merge title="#{ht 'track.new.title', :default=>[' New Track'] }">
+    <body: class="new-page track" param/>
+
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="track.new.heading">
+            New Track
+          </ht>
+        </h2>
+      </section>
+
+      <section param="content-body">
+        <form param>
+          <submit: label="#{ht 'track.actions.create', :default=>['Create Track']}"/>
+        </form>
+      </section>
+    <h5><%= __FILE__ -%></h5>
+    </content:>
+  </page>
+</def>
+
+<new-page for="Track"/>

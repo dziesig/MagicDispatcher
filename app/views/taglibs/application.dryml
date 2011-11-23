@@ -1,6 +1,22 @@
 <!-- Global taglib - these tags are shared across all subsites -->
-
+<include plugin="hobo-jquery" />
 <include src="rapid" gem="hobo"/>
 
+<include src="taglibs/auto/rapid/cards"/>
+<include src="taglibs/auto/rapid/pages"/>
+<include src="taglibs/auto/rapid/forms"/>
 <include src="taglibs/nav_item"/>
+<include src="railroads/form"/>
+<include src="branches/form"/>
+<include src="sections/form"/>
+<include src="tracks/form"/>
+
+<extend tag="page">
+  <old-page merge>
+    <custom-scripts:>
+      <hjq-assets/>
+      <script type="text/javascript" src="javascripts/magic_dispatcher.js"></script>
+    </custom-scripts>
+  </old-page>
+</extend>
 

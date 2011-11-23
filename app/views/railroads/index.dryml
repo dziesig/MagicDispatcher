@@ -41,7 +41,7 @@
           <ht key="railroad.actions.new">New Railroad</ht>
         </a>
 
-        <table-plus fields="this, user"/>
+        <table-plus fields="this, branches.count, user"/>
 
       </section>
     </content:>

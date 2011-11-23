@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109230558) do
+ActiveRecord::Schema.define(:version => 20111123175944) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(:version => 20111109230558) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "north_south",           :default => false
+    t.boolean  "west_south_on_right",   :default => false
+    t.boolean  "eastbound_odd_numbers", :default => false
   end
 
   add_index "railroads", ["user_id"], :name => "index_railroads_on_user_id"
@@ -58,18 +61,65 @@ ActiveRecord::Schema.define(:version => 20111109230558) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "branch_id"
+    t.text     "arrival_instructions"
   end
 
   add_index "sections", ["branch_id"], :name => "index_sections_on_branch_id"
+
+  create_table "track_connections", :force => true do |t|
+    t.string   "name"
+    t.integer  "index"
+    t.boolean  "left"
+    t.boolean  "top"
+    t.boolean  "center"
+    t.boolean  "bottom"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "track_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "index"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tracks", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "section_id"
+    t.integer  "ul_id"
+    t.integer  "cl_id"
+    t.integer  "ll_id"
+    t.integer  "ur_id"
+    t.integer  "cr_id"
+    t.integer  "lr_id"
+    t.integer  "track_type_id"
+    t.integer  "ul_ext_id"
+    t.integer  "cl_ext_id"
+    t.integer  "ll_ext_id"
+    t.integer  "ur_ext_id"
+    t.integer  "cr_ext_id"
+    t.integer  "lr_ext_id"
+    t.string   "track_class"
+    t.integer  "length"
   end
 
+  add_index "tracks", ["cl_ext_id"], :name => "index_tracks_on_cl_ext_id"
+  add_index "tracks", ["cl_id"], :name => "index_tracks_on_cl_id"
+  add_index "tracks", ["cr_ext_id"], :name => "index_tracks_on_cr_ext_id"
+  add_index "tracks", ["cr_id"], :name => "index_tracks_on_cr_id"
+  add_index "tracks", ["ll_ext_id"], :name => "index_tracks_on_ll_ext_id"
+  add_index "tracks", ["ll_id"], :name => "index_tracks_on_ll_id"
+  add_index "tracks", ["lr_ext_id"], :name => "index_tracks_on_lr_ext_id"
+  add_index "tracks", ["lr_id"], :name => "index_tracks_on_lr_id"
   add_index "tracks", ["section_id"], :name => "index_tracks_on_section_id"
+  add_index "tracks", ["track_type_id"], :name => "index_tracks_on_track_type_id"
+  add_index "tracks", ["ul_ext_id"], :name => "index_tracks_on_ul_ext_id"
+  add_index "tracks", ["ul_id"], :name => "index_tracks_on_ul_id"
+  add_index "tracks", ["ur_ext_id"], :name => "index_tracks_on_ur_ext_id"
+  add_index "tracks", ["ur_id"], :name => "index_tracks_on_ur_id"
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",          :limit => 40

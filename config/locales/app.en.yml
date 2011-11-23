@@ -5,16 +5,24 @@ en:
   activerecord:
     attributes:
       railroad:
-        user:     Tycoon
+        eastbound_odd_numbers:  Odd Numbers for Eastbound
+        north_south:            North/South
+        user:                   Tycoon
+        west_south_on_right:    West or South on Right
       user:
-        name:     Tycoon
+        name:                   Tycoon
+    attribute_help:
+      railroad:
+        eastbound_odd_numbers:  Default - Even numbered trains run Eastbound
+        north_south:            Default - Railroad uses East/West.
+        west_south_on_right:    Default - East or North is drawn on the right.
         
 
   user:
     index:
-      heading:    Tycoon Index
+      heading:        Tycoon Index
     signup:
-      heading:    Signup New Tycoon
+      heading:        Signup New Tycoon
 
 #  attributes:
 #    created_at: Created at
@@ -34,4 +42,3 @@ en:
 #        email_address: Email Address
 #    attribute_help:
 #      user:
-#        email_address: We will never share your address with third parties

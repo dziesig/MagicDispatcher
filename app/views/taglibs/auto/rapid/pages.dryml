@@ -9,6 +9,7 @@
     <nav-item with="&Railroad"><ht key="railroad.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Section"><ht key="section.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Track"><ht key="track.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&User"><ht key="user.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
 
@@ -211,7 +212,7 @@
               </ht>
             </h2>
 
-            <record-flags fields="" param/>
+            <record-flags fields="north_south, west_south_on_right, eastbound_odd_numbers" param/>
 
             <a:user param="creator-link"/>
 
@@ -455,6 +456,8 @@
 
             <record-flags fields="" param/>
 
+            <a:section param="creator-link"/>
+
             <a action="edit" if="&can_edit?" param="edit-link">
               <ht key="track.actions.edit" name="#{name(:no_wrapper => true)}">
                 Edit Track
@@ -463,7 +466,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="section" param/>
+            <field-list fields="track_class, length, cl, cl_ext, cr, cr_ext, ll, ll_ext, lr, lr_ext, track_type, ul, ul_ext, ur, ur_ext" param/>
           </section>
     </content:>
 
@@ -520,6 +523,9 @@
       </header>
 
       <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="user.actions.new">New User</ht>
+        </a>
 
         <page-nav param="top-page-nav"/>
 
@@ -527,13 +533,6 @@
 
         <page-nav param="bottom-page-nav"/>
 
-
-        <div param="new-form">
-          <h3 param="new-form-heading">
-            <ht key="user.form.new.heading">New User</ht>
-          </h3>
-          <form with="&@invalid_record || new_for_current_user(User)" param/>
-        </div>
 
       </section>
     </content:>

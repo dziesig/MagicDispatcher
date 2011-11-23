@@ -24,6 +24,30 @@
 
 
 
+<def tag="form" for="TrackConnection">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, index, left, top, center, bottom" param/>
+    <div param="actions">
+      <submit label="#{ht 'track_connection.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="TrackType">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="name, index" param/>
+    <div param="actions">
+      <submit label="#{ht 'track_type.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="User">
   <form merge param="default">
     <error-messages param/>

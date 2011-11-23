@@ -62,6 +62,25 @@
     <header: param>
       <h4 param="heading"><name/></h4>
     </header:>
+    <body: param>
+      <view:section param="creator"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="TrackConnection">
+  <card class="track-connection" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="TrackType">
+  <card class="track-type" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
   </card>
 </def>
 

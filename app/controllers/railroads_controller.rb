@@ -14,6 +14,7 @@
 # 
 #     You should have received a copy of the GNU General Public License
 #     along with MagicDispatcher.  If not, see <http://www.gnu.org/licenses/>.
+require './lib/myregexp.rb';
 
 class RailroadsController < ApplicationController
 
@@ -21,6 +22,20 @@ class RailroadsController < ApplicationController
 
   auto_actions :all
 
+  def create
+    super
+    hobo_create
+  end
+  
+  def new
+    super
+    hobo_new
+  end
+  
+  # def edit
+  #   super
+  # end
+  
   def index
     TablePlusSupport::save_param(params,:sort,session,'name')
     TablePlusSupport::save_param(params,:search,session)
@@ -28,6 +43,12 @@ class RailroadsController < ApplicationController
                                   :order_by => 
       parse_sort_param(:name)),
     TablePlusSupport::save_page(params,10,session)
+    super
   end
   
+  def show
+    hobo_show
+    railroad_branch_section.railroad = MyRegexp::get_id_from_param(params[:id])
+    super
+  end
 end

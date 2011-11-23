@@ -1,0 +1,27 @@
+<def tag="edit-page" for="Track">
+  <page merge title="#{ht 'track.edit.title', :default=>['Edit Track'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page track" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="track.edit.heading" name="#{name(:no_wrapper => true)}">
+            Edit Track
+          </ht>
+        </h2>
+        <delete-button label="#{ht 'track.actions.delete', :default=>['Remove This Track']}" param/>
+      </section>
+      <% @editing = true %>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    <h5><%= __FILE__ -%></h5>
+    </content:>
+
+  </page>
+</def>
+
+
+<edit-page for="Track"/>

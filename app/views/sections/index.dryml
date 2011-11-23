@@ -1,0 +1,33 @@
+<def tag="index-page" for="Section">
+  <page merge title="#{ht 'section.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page section" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="section.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="section.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="section.actions.new">New Section</ht>
+        </a>
+
+        <table-plus fields="this, tracks.count"/>
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+<index-page for="Section"/>
+

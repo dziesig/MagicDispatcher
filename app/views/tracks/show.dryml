@@ -1,0 +1,95 @@
+<def tag="show-page" for="Track">
+  <page merge title="#{ht 'track.show.title', :default=>['Track'], :name => name(:no_wrapper => true) }">
+
+    <body: class="show-page track" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading">
+              <ht key="track.show.heading" name="#{name(:no_wrapper => true)}">
+                Track <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="" param/>
+
+            <a:section param="creator-link"/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="track.actions.edit" name="#{name(:no_wrapper => true)}">
+                Edit Track
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+          <% ZLogger::puts "#{this.inspect}" %>
+            <div class="track-edit">
+              <table>
+                <% if @this.track_type %>
+                  <tr>
+                    <% if @this.track_type.has_connection?(TrackType::UL)%>
+                      <td><view field="ul"/></td>
+                      <td><view field="ul_ext"/></td>
+                    <% else %>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    <% end %>
+                    <td>&nbsp;</td>
+                    <% if @this.track_type.has_connection?(TrackType::UR)%>
+                      <td><view field="ur_ext"/></td>
+                      <td><view field="ur"/></td>
+                    <% else %>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    <% end %>
+                  </tr>
+                  <tr>
+                    <% if @this.track_type.has_connection?(TrackType::CL)%>
+                      <td><view field="cl"/></td>
+                      <td><view field="cl_ext"/></td>
+                    <% else %>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    <% end %>
+                    <td class="track-edit-type"><view field="track_type"/></td>
+                    <% if @this.track_type.has_connection?(TrackType::CR)%>
+                      <td><view field="cr_ext"/></td>
+                      <td><view field="cr"/></td>
+                    <% else %>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    <% end %>
+                  </tr>
+                  <tr>
+                    <% if @this.track_type.has_connection?(TrackType::LL)%>
+                      <td><view field="ll"/></td>
+                      <td><view field="ll_ext"/></td>
+                    <% else %>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    <% end %>
+                    <td>&nbsp;</td>
+                    <% if @this.track_type.has_connection?(TrackType::LR)%>
+                      <td><view field="lr_ext"/></td>
+                      <td><view field="lr"/></td>
+                    <% else %>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    <% end %>
+                  </tr>
+                <% else %>
+                  <tr>
+                    <td><view field="track_type"/></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>    
+          </section>
+    <h5><%= __FILE__ -%></h5>
+    </content:>
+
+  </page>
+</def>
+
+<show-page for="Track"/>

@@ -1,0 +1,33 @@
+<def tag="index-page" for="Track">
+  <page merge title="#{ht 'track.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page track" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="track.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="track.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="track.actions.new">New Track</ht>
+        </a>
+
+        <table-plus fields="this, track_type"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+<index-page for="Track"/>

@@ -1,0 +1,91 @@
+0003.0  20 Nov 2011 - Sunday
+
+0003.1  Finished all unit tests for Railroad, Branch, Section and Track
+        EXCEPT delete.  This probably could be done from the railroad test
+        file but I'm not sure whether the fixtures for the children will be loaded.
+        
+        Giving it a try.
+        
+        Didn't need the fixture.  I added the railroad, added branches to railroad
+        added section to one of the branches, added a track to the section.
+        Then I tested to ensure that all of the objects were in the db.
+        
+        Next railroad.destroy and ensure that all of the objects are GONE!
+        
+        They are.
+        
+0003.2  Need to elaborate on tracks and their connections.
+
+=====
+
+0002.0  19 Nov 2011 - Saturday
+
+0002.1  Much progress on Friday and today. 
+
+        Put a header just below the navigation tabs.  It shows the last 
+        Railroad, Branch and Section selected by the user and responds appropriately
+        to changes in the parent (e.g., if Railroad changes, Branch and Section are
+        deselected).
+        
+        Updated the <nav-item> override to allow programatic control of tab
+        visibility.  For backwards compatibility, it allows me to HIDE one
+        or more tabs by setting a global variable $hide_tabs to string,
+        symbol or array of strings (value corresponds to the model name of
+        the tab - e.g., 'Branch')
+        
+        Diddled with the css to free up some vertical space.
+        
+0002.2  Implementing unit tests for Railroad, Branch, Section and Track.
+
+        Noticed in log that the program is looking for magic_dispatcher.js
+        on the path corresponding to the selected page!  NEED TO CHECK THIS OUT
+
+=====
+
+0001.0  17 Nov 2011 - Thursday
+
+0001.1  Trying to design the UI for the Tycoon which occupies the
+        front page and looks something like this: (may be totally wrong)
+        
+        Railroad    <Dropdown>    <New button>  <Delete button>
+        
+        Branch      <Dropdown>    <New button>  <Delete button>
+        
+        Section     <Dropdown>    <New-button>  <Delete button>
+        
+        Track       <Dropdown>    <New-button>  <Delete button>
+        
+        ==================== Track Data ==========================
+        
+        <Track Type Dropdown> // e.g., Thru, Left Entry RH Turnout
+        
+        <East/North Left checkbox> // Default is East/North on right.
+        
+        <Track Class Dropdown> // e.g. Main, Passing, Siding/Industrial/Yard
+        
+        ----------- Connections -----------
+        
+        <UL Dropdown>               <UR Dropdown>
+        <CL Dropdown>   Track Name  <CR Dropdown>
+        <LL Dropdown>               <LR Dropdown>
+        
+        This looks cool, but the controller will be totally complicated.
+        
+        What I want is some way to select the Railroad which will be used
+        to restrict the Branches on the Branch Index page, select the Branch 
+        which will be used to restrict the Sections on the Section Index page
+        and select the Section which will be used to restrict the Tracks on 
+        the Track Index Page.
+        
+0001.2  A second idea which follows the Hobo theme a little more closely.
+
+        Front page shows the last Railroad selected (or created) using
+        the Railroad Tab (if railroad deleted, defaults to none as when
+        there are no railroads initially)
+        
+        It also shows the last Branch selected (or created) using the
+        Branch Tab - reset if Railroad changed or deleted.
+        
+        Similarly for the last Section selected....
+        
+        

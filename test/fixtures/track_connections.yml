@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  name: 'UL'
+  index: 0
+#
+two:
+  name: 'CL'
+  index: 1
+  
+three:
+  name: 'LL'
+  index: 2
+  
+four:
+  name: 'UR'
+  index: 3
+  
+five:
+  name: 'CR'
+  index: 4
+  
+six:
+  name: 'LR'
+  index:  5
+
+  

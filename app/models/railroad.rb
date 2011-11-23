@@ -20,7 +20,10 @@ class Railroad < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    name :string, :unique, :required => true
+    name :string, :unique, :required
+    north_south :boolean, :default => false
+    west_south_on_right :boolean, :default => false
+    eastbound_odd_numbers :boolean, :default => false
     timestamps
   end
 

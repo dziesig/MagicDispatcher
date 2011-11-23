@@ -1,0 +1,17 @@
+<def tag="tycoon-partial">
+
+  <h1><%=@tycoon%></h1>
+  <table>
+    <tr>
+      <th>Railroad</th><td><%= @x -%></td>
+    </tr>
+    <tr>
+      <th>Branch</th><td><%= @y -%></td>
+    </tr>
+    <tr>
+      <th>Section</th><td></td>
+    </tr>
+  </table> 
+</def>
+
+<tycoon-partial/>

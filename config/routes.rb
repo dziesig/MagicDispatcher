@@ -8,7 +8,11 @@ MagicDispatcher::Application.routes.draw do
   match 'gpl' => 'front#gpl'
   match 'warranty' => 'front#warranty'
   match 'copy' => 'front#copy'
-
+  
+  match 'front/branches_div' => 'front#branches_div'
+  
+  # match 'tracks' => 'tracks#ajax'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

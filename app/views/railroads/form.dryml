@@ -1,7 +1,7 @@
 <def tag="form" for="Railroad">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name" param/>
+    <field-list fields="name, north_south, west_south_on_right, eastbound_odd_numbers" param/>
     <div param="actions">
       <submit label="#{ht 'railroad.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

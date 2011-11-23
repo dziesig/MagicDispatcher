@@ -16,15 +16,21 @@
     </header> 
 
     <section class="content-body">
-        <% if User.count > 0 -%>
-          <% role = current_user.role.to_s -%>
-          <% if role == 'Tycoon' -%>
-            <partial name='tycoon' locals="&{:x => 10, :y => 20, :railroads => @railroads}"/>
-          <% end -%>
-          <% if role == 'Dispatcher' -%>
-            <partial name='dispatcher'/>
-          <% end -%>
+      <% if User.count > 0 -%>
+        <% role = ''
+           if (current_user.class != Guest) 
+             role = current_user.role.to_s 
+           end
+           if role == 'Tycoon' 
+        -%>
+          <section class="tycoon_front">
+            <h1>Tycoon: <%= current_user.name -%></h1>
+          </section>
         <% end -%>
+        <% if role == 'Dispatcher' -%>
+          <partial name='dispatcher'/>
+        <% end -%>
+      <% end -%>
     </section>
   </content:>
 

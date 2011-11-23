@@ -15,7 +15,7 @@
         <delete-button label="#{ht 'railroad.actions.delete', :default=>['Remove This Railroad']}" param/>
       </section>
 
-      <section param="content-body">
+<section param="content-body">
         <form param/>
       </section>
     </content:>
